@@ -323,6 +323,76 @@ input, select, textarea {
 		border-bottom-color: #eeeeee;
 	}
 
+
+/* ------------------------------------------------------------
+   4. IMAGE SIDE (RIGHT)
+   ------------------------------------------------------------ */
+.intro-image {
+  flex-shrink: 0;           /* prevent the image from shrinking too far */
+}
+
+.intro-image img {
+  width: 350px;             /* increase circle size from 180→250 */
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;   /* white border around circle */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+
+@media (max-width: 480px) {
+  /* On very small phones, shrink text and image further */
+  .intro-text h1 {
+    font-size: 2rem;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+  }
+
+  .intro-image img {
+    width: 180px;
+    height: 180px;
+  }
+}
+	/* Responsive intro layout with image and text */
+	.intro-container {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-wrap: wrap;
+	  gap: 2rem;
+	  padding: 2rem;
+	  text-align: left;
+	}
+
+	.intro-image img {
+	  width: 280px;
+	  height: 280px;
+	  object-fit: cover;
+	  border-radius: 50%;
+	  border: 4px solid #fff;
+	  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	}
+
+	.intro-text {
+	  max-width: 600px;
+	}
+
+	@media (max-width: 768px) {
+	  .intro-container {
+		flex-direction: column;
+		text-align: center;
+	  }
+
+	  .intro-text {
+		max-width: 100%;
+	  }
+	}
+
+
 /* Row */
 
 	.row {
@@ -3271,7 +3341,7 @@ input, select, textarea {
 			width: 100%;
 			height: 100%;
 			background-color: #212931;
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg3.webp");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
@@ -3307,7 +3377,7 @@ input, select, textarea {
 		}
 
 		body.is-preload #wrapper.fade-in:before {
-			opacity: 1;
+			opacity: 0;
 		}
 
 		@media screen and (orientation: portrait) {
