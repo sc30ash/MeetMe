@@ -391,6 +391,116 @@ input, select, textarea {
 		max-width: 100%;
 	  }
 	}
+/* ------------------------------------------------------------
+   INTRO SOCIAL ICONS
+   ------------------------------------------------------------ */
+
+/* 1) Make .intro-image a column‐flex container so the photo and icons stack & center */
+.intro-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 2) Container for the social‐icon row */
+.intro-social {
+  margin-top: 1rem;              /* space beneath the circular photo */
+  display: flex;
+  justify-content: center;       /* center the <ul> horizontally */
+  width: 100%;
+}
+
+/* 3) The <ul> holding the three links */
+.intro-social ul.icons.alt {
+  display: flex;
+  gap: 1.5rem;                   /* horizontal spacing between each icon */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 4) Ensure each <a> uses inline‐flex so PNG and font‐icons align vertically */
+.intro-social ul.icons.alt li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;         /* remove any underline */
+}
+
+/* 5) LeetCode link wrapper (PNG inside) */
+.intro-social .leetcode-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 2.25em;
+  height: 2.25em;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  overflow: hidden; /* Prevents any image overflow or box */
+}
+
+/* 6) Size the LeetCode PNG to 32×32 */
+.intro-social .leetcode-wrapper .leetcode-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* 7) FontAwesome LinkedIn + GitHub icons: force them to 32px */
+.intro-social a.fa-linkedin:before,
+.intro-social a.fa-github:before {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.intro-social .icon.brands.alt.fa-linkedin,
+.intro-social .icon.brands.alt.fa-github {
+  font-size: 32px;
+  color: #fff;                   /* white on dark background */
+}
+
+/* 8) Hover / Focus: subtle scale enlargement */
+.intro-social .leetcode-wrapper:hover .leetcode-icon,
+.intro-social .leetcode-wrapper:focus .leetcode-icon,
+.intro-social .leetcode-wrapper:hover{
+  transform: scale(1.1);
+  transition: transform 0.15s ease-in-out;
+}
+
+.intro-social a.fa-linkedin:hover:before,
+.intro-social a.fa-linkedin:focus:before,
+.intro-social a.fa-github:hover:before,
+.intro-social a.fa-github:focus:before {
+  transform: scale(1.1);
+  transition: transform 0.15s ease-in-out;
+}
+
+/* 9) Responsive adjustment for very narrow screens */
+@media (max-width: 480px) {
+  .intro-social ul.icons.alt {
+    gap: 1rem;
+  }
+
+  .intro-social .leetcode-icon,
+  .intro-social .icon.brands.alt.fa-linkedin,
+  .intro-social .icon.brands.alt.fa-github {
+    width: 24px;                 /* shrink PNG on very small phones */
+    height: 24px;
+    font-size: 24px;            /* shrink FontAwesome icons */
+  }
+}
+
+
+
 
 
 /* Row */
@@ -3743,6 +3853,7 @@ input, select, textarea {
 		}
 
 		#nav ul.icons.alt li .icon:before {
+			grayscale(100%);
 			box-shadow: inset 0 0 0 2px #ffffff;
 		}
 
@@ -3759,10 +3870,12 @@ input, select, textarea {
 			border-bottom-color: rgba(255, 255, 255, 0.5);
 		}
 
-			#nav a:hover {
+			#nav icons li a.icon.brands.alt.fa-linkedin:hover,
+			icons li a.icon.brands.alt.fa-github:hover	{
 				border-bottom-color: transparent;
 				color: #18bfef !important;
 			}
+			
 
 		#nav strong, #nav b {
 			color: #ffffff;
@@ -3851,6 +3964,13 @@ input, select, textarea {
 			flex-shrink: 0;
 			margin-bottom: 0;
 		}
+
+		#nav ul.icons li a.icon.brands.alt.leetcode-icons.leetcode-icon:hover {
+				border-bottom-color: transparent;
+				grayscale(0%);
+				border-bottom-color: transparent;
+				color: #18bfef !important;
+			}
 
 		@media screen and (max-width: 980px) {
 
