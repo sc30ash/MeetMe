@@ -501,8 +501,6 @@ input, select, textarea {
 
 
 
-
-
 /* Row */
 
 	.row {
@@ -4944,6 +4942,84 @@ input, select, textarea {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================
+   TIMELINE COMPONENT
+   ==========================================================*/
+.post .timeline{
+  position:relative;
+  width:100%;
+  min-height:380px;                  /* grew a bit to fit 3 lanes   */
+  margin:2rem 0 2.5rem;
+  font-size:.95rem;
+}
+
+/* ─── axis & year labels ─────────────────────────────────── */
+.post .timeline .axis{
+  position:absolute;
+  top:55%;                           /* nudged down for the new lane */
+  left:0; right:0;
+  height:4px; background:#666;
+}
+
+.post .timeline .year{
+  position:absolute;
+  top:calc(55% + .75rem);
+  transform:translateX(-50%);
+  font-size:.85em; font-weight:600; color:#666;
+}
+
+/* ─── event bars ─────────────────────────────────────────── */
+.post .timeline .event{
+  position:absolute;
+  /* responsive height: auto so full background shows */
+  min-height:48px;
+  height:auto;
+  padding:8px 14px;
+  line-height:1.35;                  /* multi-line friendly         */
+  border-radius:6px;
+  color:#fff;
+  white-space:normal;                /* wraps instead of ellipsis   */
+  word-wrap:break-word;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);
+  display:flex; align-items:center;  /* vertical-centre multi-line   */
+}
+
+/* ─── vertical lanes ─────────────────────────────────────── */
+.post .timeline .top   { top:10%; }  /* NEW – very top lane          */
+.post .timeline .above { top:28%; }  /* old “above” lane             */
+.post .timeline .below { top:72%; }  /* unchanged                    */
+
+/* ─── colours by category ────────────────────────────────── */
+.post .timeline .education { background:#0a5400; } /* dark-green */
+.post .timeline .industry  { background:#8b2e00; } /* brown      */
+.post .timeline .internship{ background:#005d99; } /* deep-blue  */
+.post .timeline .ongoing   { background:#0078d4; } /* bright-blue*/
+
+/* ─── legend ─────────────────────────────────────────────── */
+.timeline-legend{
+  display:flex; gap:1.5rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:1rem;
+  font-size:.85rem;
+}
+.timeline-legend li{
+  list-style:none; display:flex; align-items:center; gap:.4rem;
+}
+.timeline-legend .swatch{
+  width:16px; height:16px; border-radius:3px;
+}
+.timeline-legend .education { background:#0a5400; }
+.timeline-legend .industry  { background:#8b2e00; }
+.timeline-legend .internship{ background:#005d99; }
+.timeline-legend .ongoing   { background:#0078d4; }
+
+/* ─── responsive tweak ───────────────────────────────────── */
+@media screen and (max-width:768px){
+  .post .timeline{ font-size:.8rem; min-height:330px; }
+  .post .timeline .event{ min-height:38px; padding:6px 10px; }
 }
 
 .cil-3d:before {
